@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e8d5f082-8473-44d1-9fc4-8dbc61ae7df5": {
+      "ProjectGuid": "e8d5f082-8473-44d1-9fc4-8dbc61ae7df5",
+      "DisplayName": "App",
+      "ColorIndex": 0
+    },
+    "91c4eff6-9e97-465c-815a-d232bfc84120": {
+      "ProjectGuid": "91c4eff6-9e97-465c-815a-d232bfc84120",
+      "DisplayName": "SIConsole",
+      "ColorIndex": 1
+    },
+    "4838b225-8846-47a8-b700-0413ce1a81ef": {
+      "ProjectGuid": "4838b225-8846-47a8-b700-0413ce1a81ef",
+      "DisplayName": "Test",
+      "ColorIndex": 2
+    },
+    "efb2a5e8-b8c5-42d1-8c4d-20988e926ec4": {
+      "ProjectGuid": "efb2a5e8-b8c5-42d1-8c4d-20988e926ec4",
+      "DisplayName": "Test",
+      "ColorIndex": 3
+    },
+    "df3416ec-9244-43db-a07f-619aa3680ab1": {
+      "ProjectGuid": "df3416ec-9244-43db-a07f-619aa3680ab1",
+      "DisplayName": "Test",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}
