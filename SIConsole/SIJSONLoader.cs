@@ -5,33 +5,33 @@ namespace SIConsole;
 
 public class SIJSONLoader
 {
-    private SIJob[] _jobs;
+    public Type[] JobTypes { get; set; }
 
-    public SIJSONLoader()
+    public SIJSONLoader() : this(Array.Empty<Type>())
     {
-        _jobs = Array.Empty<SIJob>();
+
     }
 
-    public void Load(string json, params Type[] jobTypes)
+    public SIJSONLoader(params Type[] jobTypes)
     {
-        var converter = new SIJobConverter(jobTypes);
-        var jobs = JsonConvert.DeserializeObject<SIJob[]>(json, converter);
-
-        _jobs = jobs ?? throw new JsonException("Jobs value is null");
+        JobTypes = jobTypes;
     }
 
-    public void Load(JsonReader json, params Type[] jobTypes)
+    public SIData Load(string json)
     {
-        var converter = new SIJobConverter(jobTypes);
+        var converter = new SIJobConverter(JobTypes);
+        var data = JsonConvert.DeserializeObject<SIData>(json, converter);
+
+        return data ?? throw new JsonException("Jobs value is null");
+    }
+
+    public SIData Load(JsonReader json)
+    {
+        var converter = new SIJobConverter(JobTypes);
         var serializer = new JsonSerializer();
         serializer.Converters.Add(converter);
-        var jobs = serializer.Deserialize<SIJob[]>(json);
+        var data = serializer.Deserialize<SIData>(json);
 
-        _jobs = jobs ?? throw new JsonException("Jobs value is null");
-    }
-
-    public SIJob[] ToJobs()
-    {
-        return _jobs;
+        return data ?? throw new JsonException("Jobs value is null");
     }
 }
