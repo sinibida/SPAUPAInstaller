@@ -20,6 +20,16 @@ public class SIJSONLoader
         _jobs = jobs ?? throw new JsonException("Jobs value is null");
     }
 
+    public void Load(JsonReader json, params Type[] jobTypes)
+    {
+        var converter = new SIJobConverter(jobTypes);
+        var serializer = new JsonSerializer();
+        serializer.Converters.Add(converter);
+        var jobs = serializer.Deserialize<SIJob[]>(json);
+
+        _jobs = jobs ?? throw new JsonException("Jobs value is null");
+    }
+
     public SIJob[] ToJobs()
     {
         return _jobs;
