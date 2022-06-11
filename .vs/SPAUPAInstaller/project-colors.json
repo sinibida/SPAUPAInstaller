@@ -25,7 +25,17 @@
       "ProjectGuid": "df3416ec-9244-43db-a07f-619aa3680ab1",
       "DisplayName": "Test",
       "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "기타 파일",
+      "ColorIndex": -1
+    },
+    "b8ec3c4d-9e9e-45bf-9507-8ed6e79aff4e": {
+      "ProjectGuid": "b8ec3c4d-9e9e-45bf-9507-8ed6e79aff4e",
+      "DisplayName": "SPAUPAInstaller",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 5
+  "NextColorIndex": 6
 }

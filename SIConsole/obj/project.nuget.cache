@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "dDHhV9tif+BkLSF2fydo76VD4KrwIVD8PxCu6qkQzSaKEA7i7KWjBlq+8dWPD2pqOhIH/aMl1o5TwKHIIt68Xw==",
+  "dgSpecHash": "TRoRYxM1p3Pr9eqpu8zYGatCkS8YkhwlZI2ThdoaTTC04yETPqkGrwyHKqL7IMPgqPUDSWrMydv5TN5akXsdOw==",
   "success": true,
   "projectFilePath": "C:\\MyWork\\Etc\\SPAUPAInstaller\\SIConsole\\SIConsole.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\sinib\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
