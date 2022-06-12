@@ -20,7 +20,11 @@ internal static class Program
         using (var sr = new StreamReader(Path.Combine(path, "data.json")))
             dat = loader.Load(new JsonTextReader(sr));
 
-        var executor = new SIJobExecutor(dat.Jobs);
+        var executor = new SIJobExecutor(dat.Jobs)
+        {
+            WorkingDirectory = "C:\\test",
+            Tags = new string[]{"c"}
+        };
         executor.ExecuteAll();
         Console.WriteLine("Done!");
     }

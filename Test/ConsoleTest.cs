@@ -1,3 +1,5 @@
+using System.Linq;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SIConsole;
 
@@ -45,12 +47,12 @@ namespace Test
             #endregion
 
             var loader = new SIJSONLoader(typeof(TestJob), typeof(TestJob2));
-            SIData data = loader.Load(json);
+            var data = loader.Load(json);
             var args = data.Args;
             var jobs = data.Jobs;
 
             CollectionAssert.AreEqual(new string[] {"M_TARGET_DIRECTORY"}, args);
-            Assert.AreEqual(2, jobs.Length);
+            Assert.AreEqual(2, jobs.Count);
 
             var testJob = (TestJob) jobs[0];
 
@@ -67,6 +69,29 @@ namespace Test
             Assert.AreEqual(testJob.Return, "Hello World");
             Assert.AreEqual(testJob2.Return, 8);
             Assert.AreEqual(testJob2.Progress, 1);
+        }
+
+        [TestMethod]
+        public void TagTest()
+        {
+            SIJobCollection col = new SIJobCollection
+            {
+                new TestJob2 {A = 1, B = 2, TagFilters = new[] {"a", "b"}},
+                new TestJob2 {A = 2, B = 3, TagFilters = new[] {"a", "-b"}}
+            };
+
+            CollectionAssert.AreEqual(new[] {2},
+                (from TestJob2 x in col.FilterTag("a")
+                    select x.A).ToArray());
+            CollectionAssert.AreEqual(new[] {1},
+                (from TestJob2 x in col.FilterTag("a", "b")
+                    select x.A).ToArray());
+            CollectionAssert.AreEqual(new int[] { },
+                (from TestJob2 x in col.FilterTag("c")
+                    select x.A).ToArray());
+            CollectionAssert.AreEqual(new int[] { },
+                (from TestJob2 x in col.FilterTag()
+                    select x.A).ToArray());
         }
     }
 }

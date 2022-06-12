@@ -3,16 +3,22 @@
 public class SIJobExecutor
 {
     public string? WorkingDirectory { get; set; }
-    public SIJob[] Jobs { get; set;  }
+    public string[] Tags { get; set; }
+    public SIJobCollection Jobs { get; set; }
 
-    public SIJobExecutor() : this(Array.Empty<SIJob>())
+    public SIJobExecutor() : this(new SIJobCollection())
     {
-        
     }
 
-    public SIJobExecutor(SIJob[] jobs)
+    public SIJobExecutor(SIJobCollection jobs) : this(jobs, Array.Empty<string>())
+    {
+    }
+
+    public SIJobExecutor(SIJobCollection jobs, string[] tags)
     {
         Jobs = jobs;
+        Tags = tags;
+        WorkingDirectory = null;
     }
 
     public void ExecuteAll()
@@ -24,7 +30,8 @@ public class SIJobExecutor
             Directory.SetCurrentDirectory(WorkingDirectory);
         }
 
-        foreach (var job in Jobs)
+        var filteredJobs = Jobs.FilterTag(Tags);
+        foreach (var job in filteredJobs)
         {
             job.Execute();
         }
