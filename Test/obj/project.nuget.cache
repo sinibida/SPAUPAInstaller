@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "xrwt8KweAiBd6hEYAjhNgSpptHq+id8gCvlXXCp8dtnIfkh+1dTIdGD6X8pD1caXSrTKH2QS8TmRANsyVOBB8Q==",
+  "dgSpecHash": "C1QFIpvqeFAOc0PZW6xfxfEevydhUApMkY/8wS3KVOvS3/WcE0Z7G+edG/MY8PI79wfGmyL46mP4ibhEj4uv4A==",
   "success": true,
   "projectFilePath": "C:\\MyWork\\Etc\\SPAUPAInstaller\\Test\\Test.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\sinib\\.nuget\\packages\\commandlineparser\\2.9.1\\commandlineparser.2.9.1.nupkg.sha512",
     "C:\\Users\\sinib\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",
     "C:\\Users\\sinib\\.nuget\\packages\\microsoft.codecoverage\\16.11.0\\microsoft.codecoverage.16.11.0.nupkg.sha512",
     "C:\\Users\\sinib\\.nuget\\packages\\microsoft.net.test.sdk\\16.11.0\\microsoft.net.test.sdk.16.11.0.nupkg.sha512",

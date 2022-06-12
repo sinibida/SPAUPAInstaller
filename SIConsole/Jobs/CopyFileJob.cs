@@ -8,6 +8,6 @@ public class CopyFileJob : SIJob
 
     public override void Execute()
     {
-        File.Copy(From, To);
+        File.Copy(From, To, true);
     }
 }
