@@ -8,6 +8,10 @@ public class CopyFileJob : SIJob
 
     public override void Execute()
     {
-        File.Copy(From, To, true);
+        var expFrom = Environment.ExpandEnvironmentVariables(From);
+        var expTo = Environment.ExpandEnvironmentVariables(To);
+        Directory.CreateDirectory(Path.GetDirectoryName(expTo)!);
+        File.Copy(expFrom, expTo, true);
+        Progress = 1;
     }
 }

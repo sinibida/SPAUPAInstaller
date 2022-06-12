@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SIConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "-d data -a SI_T|dst -t c"
+    }
+  }
+}

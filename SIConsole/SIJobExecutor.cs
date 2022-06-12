@@ -1,13 +1,33 @@
 ﻿namespace SIConsole;
 
+public class SIExecutorProgressEventArgs : EventArgs
+{
+    public SIExecutorProgressEventArgs(SIJobCollection jobs, SIJob currentJob, double totalProgress, double progress)
+    {
+        Jobs = jobs;
+        CurrentJob = currentJob;
+        TotalProgress = totalProgress;
+        Progress = progress;
+    }
+
+    public SIJobCollection Jobs { get; }
+    public SIJob CurrentJob { get; }
+    public double TotalProgress { get; }
+    public double Progress { get; }
+}
+
+public delegate void SIExecutorProgressEventHandler(object sender, SIExecutorProgressEventArgs arg);
+
 public class SIJobExecutor
 {
+    public event SIExecutorProgressEventHandler ProgressChanged;
+
     public string? WorkingDirectory { get; set; }
     public string[] Tags { get; set; }
     public Dictionary<string, string> Args { get; set; }
     public SIJobCollection Jobs { get; set; }
 
-    private class EnvironmentSetter : IDisposable
+    public class EnvironmentSetter : IDisposable
     {
         private readonly string? _workingDir;
         private readonly Dictionary<string, string> _args;
@@ -67,9 +87,15 @@ public class SIJobExecutor
             var filteredJobs = Jobs.FilterTag(Tags);
             foreach (var job in filteredJobs)
             {
+                job.ProgressChanged += Job_ProgressChanged; 
                 job.Execute();
             }
         }
+    }
+
+    private void Job_ProgressChanged(object sender, SIJobProgressEventArgs arg)
+    {
+        ProgressChanged?.Invoke(this, new SIExecutorProgressEventArgs(Jobs, arg.Job, GetProgress(), arg.Progress));
     }
 
     public double GetProgress()
