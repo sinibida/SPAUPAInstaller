@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestPlatform.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,6 +19,8 @@ namespace Test
 
             public override void Execute()
             {
+                From = Environment.ExpandEnvironmentVariables(From);
+                To = Environment.ExpandEnvironmentVariables(To);
                 Return = "Hello World";
                 Progress = 1;
             }
@@ -64,9 +68,16 @@ namespace Test
             Assert.AreEqual(testJob2.A, 3);
             Assert.AreEqual(testJob2.B, 5);
 
-            var executor = new SIJobExecutor(jobs);
+            var executor = new SIJobExecutor(jobs)
+            {
+                Args = new Dictionary<string, string>
+                {
+                    {"SI_TARGET_DIRECTORY", "TestTest"}
+                }
+            };
             executor.ExecuteAll();
             Assert.AreEqual(testJob.Return, "Hello World");
+            Assert.AreEqual(testJob.To, "TestTest\\hello.txt");
             Assert.AreEqual(testJob2.Return, 8);
             Assert.AreEqual(testJob2.Progress, 1);
         }
