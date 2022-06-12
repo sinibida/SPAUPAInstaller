@@ -18,15 +18,11 @@ public class SIJobConverter : JsonConverter<SIJob>
             if (!jobType.IsSubclassOf(typeof(SIJob)))
                 throw new ArgumentException($"{jobType.Name} is not SIJobs type.");
 
-            var codeField = jobType.GetFields().FirstOrDefault(x => x.Name == "Code");
-            if (codeField == null)
-                throw new ArgumentException($"Code value of {jobType.Name} does not exist.");
-            if (!codeField.IsStatic)
-                throw new ArgumentException($"Code value of {jobType.Name} is not static.");
-            if (codeField.FieldType != typeof(string))
-                throw new ArgumentException($"Code value of {jobType.Name} is not string.");
-
-            var code = (string?) codeField.GetValue(null);
+            var attributes = jobType.GetCustomAttributes(typeof(SIJobInfoAttribute), false);
+            if (attributes.Length == 0)
+                throw new ArgumentException($"Code class needs SIJobInfoAttribute attribute.");
+            
+            var code = ((SIJobInfoAttribute)attributes[0]).Code;
             if (code == null)
                 throw new ArgumentException($"Code value of {jobType.Name} is null.");
 

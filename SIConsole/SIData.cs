@@ -1,4 +1,6 @@
-﻿namespace SIConsole;
+﻿using System.ComponentModel;
+
+namespace SIConsole;
 
 public class SIData
 {
