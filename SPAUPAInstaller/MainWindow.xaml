@@ -4,9 +4,59 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SPAUPAInstaller"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ItemsControl x:Name="ItemsControlMain"
+                      Padding="15" Grid.RowSpan="2">
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="FrameworkElement.Margin" Value="0,0,0,10" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.Resources>
+                <DataTemplate DataType="{x:Type local:TagToggleBox}">
+                    <ItemsControl ItemsSource="{Binding Toggles}">
+                        <ItemsControl.ItemContainerStyle>
+                            <Style>
+                                <Setter Property="FrameworkElement.Margin" Value="5" />
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding DisplayName}"
+                                          IsChecked="{Binding IsOn}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type local:ArgBox}">
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Title}" />
+                        <TextBox Grid.Column="1" Text="{Binding Value}" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.Resources>
+        </ItemsControl>
+        <Border Grid.Row="1" Padding="20">
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <Button Content="Cancel" Width="50" Margin="0,0,10,0" />
+                <Button Content="Install" Width="100" />
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

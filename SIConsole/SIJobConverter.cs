@@ -35,32 +35,30 @@ public class SIJobConverter : JsonConverter<SIJob>
         throw new NotImplementedException();
     }
     
-    public override SIJob? ReadJson(JsonReader reader, Type objectType, SIJob? existingValue, bool hasExistingValue,
+    public override SIJob ReadJson(JsonReader reader, Type objectType, SIJob? existingValue, bool hasExistingValue,
         JsonSerializer serializer)
     {
         var obj = JObject.Load(reader);
         var typeToken = obj["type"];
         if (typeToken == null)
             throw new JsonException("'type' parameter must be specified.");
-        else
-        {
-            var type = typeToken.ToObject<string>();
-            if (type == null)
-                throw new JsonException("Type value is null.");
-            if (!JobTypeDict.ContainsKey(type))
-                throw new JsonException($"Unexpected type {type}.");
 
-            var targetType = JobTypeDict[type];
+        var type = typeToken.ToObject<string>();
+        if (type == null)
+            throw new JsonException("Type value is null.");
+        if (!JobTypeDict.ContainsKey(type))
+            throw new JsonException($"Unexpected type {type}.");
 
-            var paramsToken = obj["params"];
-            if (paramsToken == null)
-                throw new JsonException("'params' parameter must be specified.");
+        var targetType = JobTypeDict[type];
 
-            var job = (SIJob?) paramsToken.ToObject(targetType);
-            if (job == null)
-                throw new JsonException("Job instance is null.");
+        var paramsToken = obj["params"];
+        if (paramsToken == null)
+            throw new JsonException("'params' parameter must be specified.");
+
+        var job = (SIJob?) paramsToken.ToObject(targetType);
+        if (job == null)
+            throw new JsonException("Job instance is null.");
             
-            return job;
-        }
+        return job;
     }
 }

@@ -16,7 +16,7 @@ public class SIJobProgressEventArgs : EventArgs
 
 public delegate void SIJobProgressEventHandler(object sender, SIJobProgressEventArgs arg);
 
-public class SIJob
+public abstract class SIJob
 {
     public event SIJobProgressEventHandler ProgressChanged;
 
@@ -45,7 +45,5 @@ public class SIJob
         Name = "";
     }
 
-    public virtual void Execute()
-    {
-    }
+    public abstract void Execute();
 }

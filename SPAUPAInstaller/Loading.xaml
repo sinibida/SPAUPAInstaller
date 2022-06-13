@@ -1,0 +1,31 @@
+﻿<Window x:Class="SPAUPAInstaller.Loading"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SPAUPAInstaller"
+        mc:Ignorable="d"
+        Title="Loading" Height="200" Width="500">
+    <Grid>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Text="Loading..." />
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <ProgressBar Grid.Row="0"
+                             Maximum="1" Value="0.7"/>
+                <ProgressBar Grid.Row="2"
+                             Maximum="1" Value="0.5"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
