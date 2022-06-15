@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SPAUPAInstaller.Element;
+using SPAUPAInstaller.ViewModel;
 
 namespace SPAUPAInstaller
 {
@@ -21,18 +23,18 @@ namespace SPAUPAInstaller
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel _notifyPropertyChanged;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            var list = new TagToggleBox();
-            list.Toggles = new ObservableCollection<TagToggle>
-            {
-                new TagToggle {Code = "a", DisplayName = "주바나보", IsOn = false},
-                new TagToggle {Code = "b", DisplayName = "어바찬보", IsOn = true}
-            };
-            ItemsControlMain.ItemsSource = new List<InstallerElement>
-                {list, new ArgBox {Value = "카이사 ㅋㅋㅋㅋㅋ", Title = "자동차가 집을 옮기면?"}};
+            _notifyPropertyChanged = (MainWindowViewModel) DataContext;
+        }
+
+        public void SetSource(List<InstallerElement> list)
+        {
+            _notifyPropertyChanged.Elements = new ObservableCollection<InstallerElement>(list);
         }
     }
 }

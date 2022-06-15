@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SPAUPAInstaller"
         mc:Ignorable="d"
-        x:Name="Window" Title="LoadingWindow" Height="200" Width="500"
+        x:Name="Window" Title="LoadingWindow" Height="200" Width="500" ResizeMode="NoResize"
         Loaded="LoadingWindow_OnLoaded"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>

@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "V2ArpSuVUF4ahlxZDKYPVLtTaezhCCh9ulvPsjYQ5TCzOe9D43/TOB7ERiv69LxpMCUpvppjAn7xRG9IssTSCA==",
+  "dgSpecHash": "2ZklwsAa9rc5R7USv70+2UvZum7ap54qX1vmS6iiEM00T349uPTOOlS9NruX75poSlr4I+tVGQiUOAyc59IK5Q==",
   "success": true,
   "projectFilePath": "C:\\MyWork\\Etc\\SPAUPAInstaller\\SPAUPAInstaller\\SPAUPAInstaller.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\sinib\\.nuget\\packages\\microsoft-windowsapicodepack-core\\1.1.4\\microsoft-windowsapicodepack-core.1.1.4.nupkg.sha512",
+    "C:\\Users\\sinib\\.nuget\\packages\\microsoft-windowsapicodepack-shell\\1.1.4\\microsoft-windowsapicodepack-shell.1.1.4.nupkg.sha512",
+    "C:\\Users\\sinib\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
