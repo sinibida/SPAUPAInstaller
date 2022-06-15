@@ -1,10 +1,17 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace SPAUPAInstaller;
+namespace SPAUPAInstaller.Element;
 
+[InstallerElementInfo(Code = "tag_box")]
 public class TagToggleBox : InstallerElement
 {
-    public ObservableCollection<TagToggle> Toggles { get; set; }
+    private ObservableCollection<TagToggle> _toggles;
+
+    public ObservableCollection<TagToggle> Toggles
+    {
+        get => _toggles;
+        set => SetProperty(ref _toggles, value);
+    }
 
     public override void ReturnInput(ref SIConsoleExecuteInfo info)
     {

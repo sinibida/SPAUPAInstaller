@@ -1,4 +1,4 @@
-﻿namespace SPAUPAInstaller;
+﻿namespace SPAUPAInstaller.Element;
 
 public class TagToggle
 {
